@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { DotPattern } from '@/components/magicui/dot-pattern';
 import { cn } from '@/lib/utils';
+import { Tooltip, TooltipProvider } from '@radix-ui/react-tooltip';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +35,7 @@ export default function RootLayout({
             '[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]'
           )}
         />
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );
