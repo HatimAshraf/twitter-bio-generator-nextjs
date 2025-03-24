@@ -28,7 +28,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
-import { Info, InfoIcon, LucideInfo } from 'lucide-react';
+import { Info } from 'lucide-react';
+import { Switch } from '../ui/switch';
 
 const formSchema = z.object({
   model: z.string().min(1, {
@@ -171,11 +172,11 @@ function UserInput() {
                 render={({ field: { value, onChange } }) => (
                   <FormItem>
                     <FormLabel className='flex items-center justify-between pb-2'>
-                      <span>
+                      <span className='flex items-center justify-center'>
                         Creativity
                         <Tooltip>
                           <TooltipTrigger>
-                            <Info className='ml-1 size-3 cursor-pointer' />
+                            <Info className='ml-1 w-4 h-4 cursor-pointer' />
                           </TooltipTrigger>
                           <TooltipContent
                             side='right'
@@ -207,8 +208,113 @@ function UserInput() {
                 )}
               />
             </div>
-            <Button type='submit'>Submit</Button>
           </fieldset>
+          <fieldset className='grid gap-2 rounded-[8px] p-4 bg-background/10 border backdrop-blur-sm'>
+            <legend className='text-sm font-medium -ml-1 px-1'>
+              User Input
+            </legend>
+            <div className='grid gap-3'>
+              <FormField
+                control={form.control}
+                name='content'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='flex items-center justify-between pb-2'>
+                      Content
+                    </FormLabel>
+                    <FormControl>
+                      <textarea
+                        placeholder='Write a short bio about yourself...'
+                        {...field}
+                        className='w-full h-32 p-2 rounded-md border border-input bg-transparent resize-none'
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className='grid grid-cols-2 py-3 gap-3'>
+              <FormField
+                control={form.control}
+                name='type'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='flex items-center justify-between pb-2'>
+                      Type
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className='w-full'>
+                          <SelectValue placeholder='Select a type' />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value='Personal'>Personal</SelectItem>
+                        <SelectItem value='Brand'>Brand</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='tone'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='flex items-center justify-between pb-2'>
+                      Tone
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className='w-full'>
+                          <SelectValue placeholder='Select a tone' />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value='Professional'>
+                          Professional
+                        </SelectItem>
+                        <SelectItem value='Casual'>Casual</SelectItem>
+                        <SelectItem value='Sarcastic'>Sarcastic</SelectItem>
+                        <SelectItem value='Funny'>Funny</SelectItem>
+                        <SelectItem value='Passionate'>Passionate</SelectItem>
+                        <SelectItem value='Thoughtful'>Thoughtful</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='emojis'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className='flex items-center my-2 mx-2'>
+                      Add Emojis
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </fieldset>
+          <Button type='submit' className='w-full h-12'>
+            Generate
+          </Button>
         </form>
       </Form>
     </div>
