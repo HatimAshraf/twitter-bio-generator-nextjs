@@ -22,10 +22,10 @@ export default function Home() {
             </AnimatedShinyText>
           </Link>
         </div>
-        <h1 className='uppercase my-6 font-extrabold text-7xl text-center w-full lg:w-[90%] mx-auto'>
+        <h1 className='uppercase text-black my-6 font-extrabold text-7xl text-center w-full lg:w-[90%] mx-auto'>
           Write a standout Twitter bio — uniquely yours, instantly.
         </h1>
-        <p className='text-xl text-gray-500 font-medium text-center w-full lg:w-[90%] mx-auto'>
+        <p className='text-xl text-gray-700 font-medium text-center w-full lg:w-[90%] mx-auto'>
           Simply answer a few questions, and we’ll craft a bio that perfectly
           captures your essence.
         </p>

@@ -220,7 +220,7 @@ function UserInput() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className='flex items-center justify-between pb-2'>
-                      Content
+                      About Yourself
                     </FormLabel>
                     <FormControl>
                       <textarea
@@ -312,7 +312,7 @@ function UserInput() {
               />
             </div>
           </fieldset>
-          <Button type='submit' className='w-full h-12'>
+          <Button type='submit' className='rounded h-12'>
             Generate
           </Button>
         </form>
